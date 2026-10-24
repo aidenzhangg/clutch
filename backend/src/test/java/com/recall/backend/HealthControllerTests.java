@@ -1,4 +1,4 @@
-package com.clutch.backend;
+package com.recall.backend;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

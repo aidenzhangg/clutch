@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Clutch",
+  "name": "Recall",
   "version": "0.1.0",
   "description": "Practice from past papers with exam-style questions, hints, grading and video help.",
   "permissions": ["sidePanel", "activeTab", "scripting"],
-  "action": { "default_title": "Open Clutch" },
+  "action": { "default_title": "Open Recall" },
   "side_panel": { "default_path": "index.html" },
   "background": { "service_worker": "background.js" }
 }

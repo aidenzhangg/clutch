@@ -1,6 +1,6 @@
-﻿# Clutch extension
+# Recall extension
 
-The React + TypeScript frontend for the Clutch Chrome study workspace.
+The React + TypeScript frontend for the Recall Chrome study workspace.
 
 See the [project README](../README.md) for installation, backend setup, features, planned focus tools and the edit/build/reload workflow.
 
@@ -13,4 +13,4 @@ npm run build
 npm run lint
 ```
 
-Load `dist` as an unpacked Chrome extension. After source changes, rebuild, reload Clutch in `chrome://extensions`, and reopen the panel. Saving a `.tsx` file alone does not update the installed extension.
+Load `dist` as an unpacked Chrome extension. After source changes, rebuild, reload Recall in `chrome://extensions`, and reopen the panel. Saving a `.tsx` file alone does not update the installed extension.

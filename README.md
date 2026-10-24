@@ -1,12 +1,12 @@
-# Clutch
+# Recall
 
-Clutch is a Chrome extension built to make AI a better study partner.
+Recall is a Chrome extension built to make AI a better study partner.
 
-I often struggle to study with AI because it gives me the answer before I have worked through the problem. It is easy to feel productive without really testing what I understand. I am building Clutch to keep the focus on thinking through the material, with hints that help me take the next step instead of skipping to the solution.
+I often struggle to study with AI because it gives me the answer before I have worked through the problem. It is easy to feel productive without really testing what I understand. I am building Recall to keep the focus on thinking through the material, with hints that help me take the next step instead of skipping to the solution.
 
 ## How it helps
 
-Clutch brings your notes, practice questions, and study help into one browser workspace. Paste or upload course notes, create fill-in-the-blank quizzes, check your understanding, and retry the questions you miss.
+Recall brings your notes, practice questions, and study help into one browser workspace. Paste or upload course notes, create fill-in-the-blank quizzes, check your understanding, and retry the questions you miss.
 
 With **Hints On**, the study helper guides you without revealing the answer. **No Hints** lets you practice independently and review missed answers after submitting. The goal is to keep you engaged with the material rather than copying an AI response.
 
@@ -26,6 +26,6 @@ This would be an estimate, not proof of attention or understanding. Webcam monit
 
 ## Privacy
 
-Clutch currently has no webcam capture or focus monitoring. Notes and quiz answers stay in the current browser session and are not sent by the hint feature. Asking for a hint sends the selected question and your message to the backend and, when AI is configured, OpenAI. Avoid including sensitive information in those messages.
+Recall currently has no webcam capture or focus monitoring. Notes and quiz answers stay in the current browser session and are not sent by the hint feature. Asking for a hint sends the selected question and your message to the backend and, when AI is configured, OpenAI. Avoid including sensitive information in those messages.
 
 For the planned focus companion, the goal is opt-in camera access, on-device video processing, and no recording or uploading of webcam footage. You should be able to pause or stop monitoring at any time. These are design commitments for the future feature, not claims about an existing implementation.
