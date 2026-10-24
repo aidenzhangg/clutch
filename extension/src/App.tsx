@@ -42,38 +42,83 @@ function App() {
     setPaper(file)
   }
 
+  // Turns serverUp into a word for the status line and a class for its colour
+  const serverLabel =
+    serverUp === null ? 'checking' : serverUp ? 'connected' : 'offline'
+
   return (
-    <main>
-      <h1>Clutch</h1>
-      <p role="status">
-        Server:{' '}
-        {serverUp === null && 'checking...'}
-        {serverUp === true && 'connected'}
-        {serverUp === false && 'not running. Start the backend, then reopen this panel.'}
-      </p>
-      <p>
-        Study from past papers. Clutch makes questions in the same style as your real exams,
-        including multiple choice and written questions. It grades your answers with partial
-        marks, gives hints when you're stuck, and finds YouTube videos for topics you keep missing.
-      </p>
+    <main className="panel">
+      <header className="masthead">
+        <h1 className="wordmark">Clutch</h1>
+        <p className={`server server--${serverLabel}`} role="status">
+          <span className="server__dot" aria-hidden="true" />
+          server {serverLabel}
+        </p>
+      </header>
 
-      <label htmlFor="paper-upload">Upload a past paper (PDF)</label>
-      <input
-        id="paper-upload"
-        type="file"
-        accept="application/pdf,.pdf"
-        onChange={handleFileChange}
-      />
+      <p className="lead">Practise from your course's own past papers.</p>
 
-      {error && <p role="alert">{error}</p>}
-
-      {paper && (
-        <p>
-          Ready: <strong>{paper.name}</strong> ({formatSize(paper.size)})
+      {serverUp === false && (
+        <p className="note">
+          Start the backend with <code>./mvnw spring-boot:run</code>, then reopen this panel.
         </p>
       )}
 
-      <button type="button">Study this page</button>
+      <section className="paper" aria-labelledby="paper-heading">
+        <h2 id="paper-heading" className="section-label">
+          Past paper
+        </h2>
+
+        <label className={`answer-box${paper ? ' answer-box--filled' : ''}`}>
+          <input
+            className="visually-hidden"
+            type="file"
+            accept="application/pdf,.pdf"
+            onChange={handleFileChange}
+          />
+          {paper ? (
+            <>
+              <span className="answer-box__mark" aria-hidden="true">✓</span>
+              <span className="answer-box__file">{paper.name}</span>
+              <span className="answer-box__meta">{formatSize(paper.size)} · choose a different file</span>
+            </>
+          ) : (
+            <>
+              <span className="answer-box__title">Choose a PDF</span>
+              <span className="answer-box__meta">An exam your course has shared · up to {MAX_SIZE_MB} MB</span>
+            </>
+          )}
+        </label>
+
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
+
+        <button type="button" className="primary" disabled={!paper}>
+          Read the questions
+        </button>
+      </section>
+
+      <section className="steps" aria-labelledby="steps-heading">
+        <h2 id="steps-heading" className="section-label">
+          How a session works
+        </h2>
+        <ol>
+          <li>
+            <strong>Clutch reads the paper</strong> and tags each question by topic and marks.
+          </li>
+          <li>
+            <strong>You get new questions</strong> written in the same style, multiple choice or
+            written.
+          </li>
+          <li>
+            <strong>Answer, then get marked</strong> with partial credit. Hints come before the
+            answer, and videos for topics you keep missing.
+          </li>
+        </ol>
+      </section>
     </main>
   )
 }
