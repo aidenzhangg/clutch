@@ -1,102 +1,37 @@
-/* Fonts are bundled with the extension (no requests to a font server) */
-@import '@fontsource-variable/fraunces/opsz.css';
-@import '@fontsource/ibm-plex-sans/400.css';
-@import '@fontsource/ibm-plex-sans/500.css';
-@import '@fontsource/ibm-plex-sans/600.css';
-@import '@fontsource/ibm-plex-mono/400.css';
-@import '@fontsource/ibm-plex-mono/500.css';
+﻿@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/outfit/400.css';
+@import '@fontsource/outfit/500.css';
+@import '@fontsource/outfit/600.css';
 
-/*
-  Palette: a printed exam paper marked in red pen.
-  paper   #F6F3EC  off-white exam paper
-  ink     #1B1A17  printed text
-  pencil  #5E5A52  secondary text (6.4:1 on paper)
-  rule    #D9D3C5  ruled lines and borders
-  red pen #B3261E  the one accent: actions and marking (5.9:1 on paper)
-  tick    #2E6B3F  success only (6.2:1 on paper)
-*/
 :root {
-  --paper: #f6f3ec;
-  --paper-raised: #fbf9f4;
-  --ink: #1b1a17;
-  --pencil: #5e5a52;
-  --rule: #d9d3c5;
-  --red-pen: #b3261e;
-  --red-pen-hover: #8f1d17;
-  --tick: #2e6b3f;
-
-  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
-  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
-
-  /* Type scale */
-  --text-xs: 0.75rem; /* 12px labels */
-  --text-sm: 0.875rem; /* 14px small print */
-  --text-base: 0.9375rem; /* 15px body (narrow panel) */
-  --text-lg: 1.125rem; /* 18px lead */
-  --text-display: 2.25rem; /* 36px wordmark */
-
-  /* Spacing (4px steps) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-
-  color-scheme: light dark;
+  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Outfit', 'Segoe UI', sans-serif;
+  --canvas: #171b1b;
+  --surface: #1e2423;
+  --raised: #272f2d;
+  --ink: #f0f0e9;
+  --muted: #acb7b1;
+  --accent: #9ab9a9;
+  --rule: #d5e3da1c;
+  --rule-hover: #d5e3da40;
+  --danger: #efb0a9;
+  color-scheme: dark;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--canvas);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
-/* Dark: the same paper, read under a desk lamp */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #1a1916;
-    --paper-raised: #22211d;
-    --ink: #ede8dd;
-    --pencil: #a7a194;
-    --rule: #3b3830;
-    --red-pen: #f07062;
-    --red-pen-hover: #f59286;
-    --tick: #7cc48c;
-  }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-width: 280px;
-}
-
-h1,
-h2,
-p,
-ul {
-  margin: 0;
-}
-
-:focus-visible {
-  outline: 2px solid var(--red-pen);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+h1, h2, h3, p { margin: 0; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button, textarea, input, select { transition: background-color 160ms, border-color 160ms, color 160ms; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+::selection { background: #9ab9a940; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }

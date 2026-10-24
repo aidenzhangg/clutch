@@ -13,3 +13,16 @@ export async function checkHealth(): Promise<boolean> {
     return false
   }
 }
+
+export async function requestHint(question: string, message: string): Promise<{ hint: string; mode: 'ai' | 'local' }> {
+  const response = await fetch(`${API_BASE}/hints`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question, message }),
+    signal: AbortSignal.timeout(25000),
+  })
+  if (!response.ok) throw new Error('Hint request failed')
+  const data = await response.json()
+  if (typeof data.hint !== 'string' || !['ai', 'local'].includes(data.mode)) throw new Error('Invalid hint response')
+  return data
+}
