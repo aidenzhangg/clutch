@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ChangeEvent } from 'react'
+import { checkHealth } from './api'
 import './App.css'
 
 const MAX_SIZE_MB = 20
@@ -11,6 +12,13 @@ function formatSize(bytes: number) {
 function App() {
   const [paper, setPaper] = useState<File | null>(null)
   const [error, setError] = useState('')
+  // null = still checking, true = server running, false = can't reach it
+  const [serverUp, setServerUp] = useState<boolean | null>(null)
+
+  // Runs once when the panel opens
+  useEffect(() => {
+    checkHealth().then(setServerUp)
+  }, [])
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
@@ -37,6 +45,12 @@ function App() {
   return (
     <main>
       <h1>Clutch</h1>
+      <p role="status">
+        Server:{' '}
+        {serverUp === null && 'checking...'}
+        {serverUp === true && 'connected'}
+        {serverUp === false && 'not running. Start the backend, then reopen this panel.'}
+      </p>
       <p>
         Study from past papers. Clutch makes questions in the same style as your real exams,
         including multiple choice and written questions. It grades your answers with partial
